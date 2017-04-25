@@ -1,0 +1,27 @@
+//
+//  AAMediaCenter-Prefix.pch
+//  AAMediaCenter
+//
+//  Created by Gavin Tsang on 2017/3/24.
+//  Copyright © 2017年 Gavin Tsang. All rights reserved.
+//
+
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+
+#ifdef DEBUG
+#define AALog(format,...) printf("[%s] [%s] %s [第%d行] %s\n", __TIME__, [[NSThread currentThread].description UTF8String], __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String])
+#else
+#define AALog(format,...)
+#endif
+
+#define AADownloadMainURL [[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"Application Support"] stringByAppendingPathComponent:@"AA.cn.AAMediaCenter"]
+//在线播放歌曲完全缓冲成功的文件夹路径
+#define AACacheMainURL [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"AA.cn.AAStreamCache"]
+//在线播放及下载歌曲未完成的文件夹路径
+#define AADownloadingPath [NSString stringWithFormat:@"%@/downloadingDocuments/",AADownloadMainURL]
+//下载完成的歌曲存放路径
+#define AADownloadedPath [NSString stringWithFormat:@"%@/downloadedDocuments/",AADownloadMainURL]
+
+#endif
+
